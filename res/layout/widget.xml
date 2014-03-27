@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+      android:id="@+id/widgetlayout"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_top"
+        android:orientation="horizontal" >
+
+    
+
+        <ImageView
+            android:background="#00000000"
+            android:id="@+id/separate1"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="50dip"
+            android:scaleType="fitXY"
+            android:src="@drawable/vertical_line" />
+
+    
+         <!--  
+        <ImageButton
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+       
+            android:paddingLeft="3.0dip"
+            android:paddingRight="3.0dip"
+            android:scaleType="fitCenter"
+            android:background="@drawable/refresh_selector2"
+     />
+          -->     
+    
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_down_session" >
+
+     <!--    <TextView
+            android:id="@+id/edt_widget1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageView1"
+            android:text="大宝" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageView1"
+            android:layout_toRightOf="@+id/imageView1"
+            android:text="13414962452" />
+-->
+
+  <!--  <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="53dp"
+            android:layout_height="53dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/contact_session" />  -->
+
+        <TextView
+            android:id="@+id/edt_widget2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="34dp"
+            android:layout_marginTop="55dp"
+            android:text="今天心情不错。恩恩。呜呜"
+            android:textSize="15dip"
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
+
+</LinearLayout>

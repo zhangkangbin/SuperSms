@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rootblock_default_bg"
+    android:orientation="vertical" >
+   <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="35dip"
+        android:background="@drawable/button" >
+
+        <TextView
+            android:id="@+id/text_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="桌面控件"
+            android:textColor="@color/white"
+            android:textSize="20dip" />
+        
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="填写你要显示的内容"
+            android:textSize="15dip" />
+
+        <EditText
+            android:id="@+id/show_sms_edt"
+            android:layout_width="wrap_content"
+            android:layout_height="150dip"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/textView1"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/btn_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/show_sms_edt"
+            android:text="更新" />
+    </RelativeLayout>
+
+</LinearLayout>

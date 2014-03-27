@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1" 
+    android:background="@drawable/rootblock_default_bg"
+    >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dip"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/ly_order_install"
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                android:background="@drawable/btn_next"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/sms_back"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/btn_next"
+                    android:drawableTop="@drawable/backups"
+                    android:gravity="center"
+                    android:text="短信备份"
+                   android:textColor="@color/white"
+                    android:textSize="18dip" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                android:layout_marginLeft="5dp"
+                android:background="#803399ff"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/sms_restore"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/btn_next"
+                    android:drawableTop="@drawable/restore"
+                    android:gravity="center"
+                    android:text="短信还原"
+                   android:textColor="@color/white"
+                    android:textSize="18dip" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                android:background="#803399ff"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/add_sms"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/btn_next"
+                    android:drawableTop="@drawable/write_sms"
+                    android:gravity="center"
+                    android:text="短信生成"
+                   android:textColor="@color/white"
+                    android:textSize="18dip" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                android:layout_marginLeft="5dp"
+                android:background="#3399ff"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/btn_locating"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/btn_next"
+                    android:drawableTop="@drawable/find"
+                    android:gravity="center"
+                    android:text="定时短信"
+                    android:textColor="@color/white"
+                    android:textSize="18dip" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                android:background="#3390ff"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/sms_show"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/btn_next"
+                    android:drawableTop="@drawable/show"
+                    android:gravity="center"
+                    android:text="短信show"
+                   android:textColor="@color/white"
+                    android:textSize="18dip" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                android:layout_marginLeft="5dp"
+                android:background="#3399ff"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/delete_button"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/btn_next"
+                    android:drawableTop="@drawable/delete"
+                    android:gravity="center"
+                    android:text="删除"
+                   android:textColor="@color/white"
+                    android:textSize="18dip" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                android:background="#953399ff"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/sms_settings"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/btn_next"
+                    android:drawableTop="@drawable/settings"
+                    android:gravity="center"
+                    android:text="设置"
+                   android:textColor="@color/white"
+                    android:textSize="18dip" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                android:layout_marginLeft="5dp"
+                android:background="#953399ff"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/btn_about"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/btn_next"
+                    android:drawableTop="@drawable/about"
+                    android:gravity="center"
+                    android:text="关于"
+                    android:textColor="@color/white"
+                    android:textSize="18dip" />
+            </LinearLayout>
+        </LinearLayout>
+        
+        
+        
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rootblock_default_bg"
+    android:orientation="vertical" >
+       <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="35dip"
+        android:background="@drawable/button" >
+
+        <TextView
+            android:id="@+id/text_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="虚拟短信"
+            android:textColor="@color/white"
+            android:textSize="20dip" />
+        
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收件人" />
+
+    <EditText
+        android:id="@+id/edt_addressee"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+    
+        android:phoneNumber="true"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="短信内容" />
+
+    <EditText
+        android:id="@+id/edt_content"
+        android:layout_width="fill_parent"
+        android:layout_height="150dip"
+     
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="读取状态：" />
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="已发" />
+
+    <Button
+        android:id="@+id/btn_add"
+          android:layout_width="300dip"
+            android:layout_height="40dip"
+        android:text="生成短信" />
+
+</LinearLayout>
