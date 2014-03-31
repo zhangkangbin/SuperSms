@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-      <RelativeLayout
+
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="40dip"
         android:background="@drawable/button" >
@@ -18,12 +18,22 @@
             android:text="短信还原"
             android:textColor="@color/white"
             android:textSize="25dip" />
-        
     </RelativeLayout>
-    
-<ListView 
-     android:id="@+id/list_re"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-    ></ListView>
+
+    <RelativeLayout
+   
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray" >
+
+        <com.example.slidecutlistview.SlideCutListView
+            android:id="@+id/slideCutListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@drawable/ic_launcher"
+            android:listSelector="@android:color/transparent" >
+        </com.example.slidecutlistview.SlideCutListView>
+    </RelativeLayout>
+
 </LinearLayout>

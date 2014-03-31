@@ -88,8 +88,9 @@ public class backupSmsService extends Service {
 			        editor.commit();
 		        }
 		        
-				
-				File file=new File(smsxml);
+				String smsxml2=sp.getString("SMS_PATH", null);
+				Log.i("baiud", smsxml+"-------"+smsxml2);
+				File file=new File(smsxml2);
 				if(!file.exists()){
 					file.mkdirs();
 				
@@ -99,7 +100,7 @@ public class backupSmsService extends Service {
 				
 					    
 			//	sqlhelper=new CreateDB(getApplicationContext(), FileName+".db", null, 1);
-				mDb = SQLiteDatabase.openOrCreateDatabase(smsxml+FileName+".db",null);
+				mDb = SQLiteDatabase.openOrCreateDatabase(smsxml2+FileName+".db",null);
 				mDb.execSQL(NAME_TABLE_CREATE);
 			 //   db=sqlhelper.getWritableDatabase();
 							
