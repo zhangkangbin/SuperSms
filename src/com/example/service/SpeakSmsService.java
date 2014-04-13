@@ -73,7 +73,7 @@ public class SpeakSmsService extends Service {
 	                    	 mSpeech.speak("发送人"+a+"信息内容"+b,
 	                                 TextToSpeech.QUEUE_FLUSH, null);
 	                    	 Log.i("test", a+b);
-	                    	 wManager.removeView(view);
+	                    	// wManager.removeView(view);
 	                    }
 	                }
 	            }
@@ -117,10 +117,13 @@ public class SpeakSmsService extends Service {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				wManager.removeView(view);
 				Toast.makeText(getApplicationContext(), "stop...",0).show();
 				Intent i=new Intent(SpeakSmsService.this,SpeakSmsService.class);
 				stopService(i);
-				wManager.removeView(view);
+				 
+				System.exit(0);
+		
 			}
 		});
 		

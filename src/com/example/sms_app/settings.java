@@ -42,7 +42,7 @@ public class settings extends Activity implements OnItemClickListener  {
 			long id) {
 		// TODO Auto-generated method stub
 
-		if(list.get(position).equals("备份路径"));
+		if(list.get(position).equals("备份路径"))
 		{
 			AlertDialog.Builder a=new AlertDialog.Builder(this) ;
 			a.setTitle("文件备份路径") ; 

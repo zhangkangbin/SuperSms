@@ -4,18 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.adapter.ReSmsAdapter;
-import com.example.adapter.SlideCutListView;
 import com.example.adapter.SmsLocatingAdapter;
 import com.example.engine.SmsInfoservice;
 import com.example.smsinfo.ReSmsInfo;
 import com.example.smsinfo.SmsInfo;
+import com.example.util.SMSFile;
+import com.example.util.tool;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -25,66 +28,196 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.adapter.SlideCutListView.RemoveDirection;
-import com.example.adapter.SlideCutListView.RemoveListener;
+public class Smsrestore extends Activity{
+	private ListView listView;
+	ReSmsAdapter adapter;
 
+	SmsInfoservice	smsInfoService ;
+	List<ReSmsInfo> smsinfos;
+	final String[] mItems = {"删除","还原"};
+	
+	
+	Handler myHandler = new Handler() {  
+        public void handleMessage(Message msg) {   
+             switch (msg.what) {   
+                  case 1:  
 
-
-
-
-
-
-public class Smsrestore extends Activity implements RemoveListener{
-	private SlideCutListView slideCutListView ;
-	private ArrayAdapter<String> adapter;
-	private List<String> dataSourceList = new ArrayList<String>();
-
-	@Override
+          			Log.i("file", "通知更新了。。。");
+          			//更新List
+          			initUi();
+          	
+          			
+                       break;   
+             }   
+             super.handleMessage(msg);   
+        }   
+   }; 
 	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		init();
-	}
+		// 取消标题栏
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.smsrestore);
+	
+		initUi();
+	
+		
 
-	private void init() {
-		slideCutListView = (SlideCutListView) findViewById(R.id.slideCutListView);
-		slideCutListView.setRemoveListener(this);
-		
-		for(int i=0; i<20; i++){
-			dataSourceList.add("滑动删除" + i); 
-		}
-		
-		adapter = new ArrayAdapter<String>(this, R.layout.me_item, R.id.list, dataSourceList);
-		slideCutListView.setAdapter(adapter);
-		
-		slideCutListView.setOnItemClickListener(new OnItemClickListener() {
+		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				Toast.makeText(Smsrestore.this, dataSourceList.get(position), Toast.LENGTH_SHORT).show();
+			public void onItemClick(AdapterView<?> arg0, View arg1, int p,
+					long arg3) {
+
+				// Toast.makeText(getApplicationContext(), "还原成功"+smsinfos.get(p).getdate(), Toast.LENGTH_LONG).show();
+         //一为路径，二为文件名
+				Diag(smsinfos.get(p).getdate(),smsinfos.get(p).getname());
+
+				Log.i("test","111"+smsinfos.get(p).getdate()+smsinfos.get(p).getname());
+
 			}
 		});
 	}
 
-	
-	//滑动删除之后的回调方法
-	@Override
-	public void removeItem(RemoveDirection direction, int position) {
-		adapter.remove(adapter.getItem(position));
-		switch (direction) {
-		case RIGHT:
-			Toast.makeText(this, "向右删除  "+ position, Toast.LENGTH_SHORT).show();
-			break;
-		case LEFT:
-			Toast.makeText(this, "向左删除  "+ position, Toast.LENGTH_SHORT).show();
-			break;
 
-		default:
-			break;
-		}
+	@SuppressWarnings("deprecation")
+	public void re(final String path,final String name){
+
+		final ProgressDialog pd = new ProgressDialog(this);
+
+		pd.setCancelable(false);
+		pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+		pd.setMessage("正在还原....");
+		pd.setButton("隐藏", new DialogInterface.OnClickListener() {
+
+			public void onClick(DialogInterface arg0, int arg1) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		pd.show();
+		smsInfoService=new SmsInfoservice(this);
+		new Thread(){
+
+			public void run(){
+
+				try {
+					smsInfoService.restoreSms(path, name, pd);
+					Log.i("test","222"+path+name);
+					pd.dismiss();
+					Looper.prepare();
+					Toast.makeText(getApplicationContext(), "还原成功", 0).show();
+					Looper.loop();
+
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					pd.dismiss();
+					Looper.prepare();
+					Toast.makeText(getApplicationContext(), "还原失败", 0).show();
+					Looper.loop();
+				}
+
+
+			}
+
+
+
+		}.start();
+
+
+	}
+
+
+	public void Diag(final String path, final String name){
 		
-	}	
+		
+		
+		
+
+		AlertDialog.Builder   builder=	new AlertDialog.Builder(this);   
+
+	
+		 builder.setTitle("选择操作");  
+
+	        builder.setItems(mItems, new DialogInterface.OnClickListener() {  
+
+	            public void onClick(DialogInterface dialog, int which) {  
+
+	                //点击后弹出窗口选择了第几项  
+
+	              //  showDialog("你选择的id为" + which + " , " + mItems[which]); 
+	            	if(which==0){
+	            		Log.i("file", path+name);
+	            		SMSFile delete=new SMSFile();
+	            	Boolean b =delete.delete(path);
+	            	if(b){
+	            		
+	            		tool.showShort(Smsrestore.this, "删除成功");
+	            	}
+	            	else{
+	            		tool.showShort(Smsrestore.this, "删除失败");
+	            		
+	            	}
+	            	
+	            		
+	            		
+	            		
+	            		
+	            		 myHandler.post(new Runnable() {
+							
+							@Override
+							public void run() {
+								// TODO Auto-generated method stub
+								 Message msg=new Message();
+			                        msg.what=1;
+			                        myHandler.sendMessage(msg);
+			                        Log.i("file", "通知他更新。。。");
+							}
+						});
+	            		
+	            	}
+	            	
+	            	
+	            	
+	            	else{
+
+	    				re(path,name);
+	            		
+	            	}
+
+	            }  
+
+	        });  
+
+	     
 
 
+
+		
+		builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {  
+
+			public void onClick(DialogInterface dialog, int whichButton) {  
+
+				//这里添加点击确定后的逻辑  
+
+
+
+			}  
+
+		});  
+		builder.create().show();  
+	}
+	
+	
+	public void initUi(){
+		smsInfoService=new SmsInfoservice(this);
+		smsinfos=smsInfoService.resmsList();
+		listView = (ListView) findViewById(R.id.list);
+		adapter = new ReSmsAdapter ( Smsrestore .this,smsinfos);
+		listView.setAdapter(adapter);
+		
+		
+	}
 }
